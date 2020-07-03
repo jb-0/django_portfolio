@@ -45,6 +45,8 @@ class Profile(models.Model):
         return reverse('profile-detail', args=[str(self.id)])
 
     def display_skills(self):
+        # Return 3 skills
+        # TODO if there are more than 3 then a trailing "..." should be added
         return ', '.join(skill.skill for skill in self.skills.all()[:3])
 
 
