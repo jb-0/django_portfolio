@@ -56,7 +56,7 @@ class WorkExperience(models.Model):
         models.CharField(max_length=100, blank=True,
                          help_text='If you do not want to display company name, provide an alias description')
     start_date = models.DateField()
-    end_date = models.DateField(blank=True)
+    end_date = models.DateField(blank=True, null=True)
     job_title = models.CharField(max_length=100)
     duties = models.CharField(max_length=1500)
 
@@ -66,7 +66,7 @@ class WorkExperience(models.Model):
 
     # Methods
     def __str__(self):
-        return self.skill
+        return self.job_title
 
 
 class ProjectExperience(models.Model):
