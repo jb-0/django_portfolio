@@ -42,8 +42,12 @@ class Profile(models.Model):
 
     # Methods
     def get_absolute_url(self):
-        """Returns the url to access a detail record for this book."""
         return reverse('profile-detail', args=[str(self.id)])
+
+    def display_skills(self):
+        return ', '.join(skill.skill for skill in self.skills.all()[:3])
+
+
 
     def __str__(self):
         return self.name

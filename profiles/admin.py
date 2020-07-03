@@ -11,7 +11,7 @@ from .models import Skill, Profile, WorkExperience, ProjectExperience
 # Customise admin classes
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email')
+    list_display = ('name', 'email', 'display_skills')
 
 
 @admin.register(Skill)
