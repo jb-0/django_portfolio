@@ -13,6 +13,11 @@ class WorkExperienceInline(admin.TabularInline):
     model = WorkExperience
     extra = 0
 
+class ProjectExperienceInline(admin.TabularInline):
+    model = ProjectExperience
+    extra = 0
+
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'display_skills')
@@ -26,7 +31,7 @@ class ProfileAdmin(admin.ModelAdmin):
             'fields': ('spoken_languages', ('github', 'linkedin'), 'skills')
         })
     )
-    inlines = [WorkExperienceInline]
+    inlines = [WorkExperienceInline, ProjectExperienceInline]
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):

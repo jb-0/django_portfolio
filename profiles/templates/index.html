@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Profiles</title>{% endblock %}
+
+{% block content %}
+  <h1>Profiles</h1>
+  <p>Welcome to our Portfolio, a website developed by <em>Jamie Barrett</em>!</p>
+  <h2>Who we are</h2>
+  <p>We are a team of developers constructed as follows:</p>
+  <ul>
+    <li><strong>We are a team of:</strong> {{ num_profiles }}</li>
+    <li><strong>With the following number of skills:</strong> {{ num_skills }}</li>
+  </ul>
+{% endblock %}
