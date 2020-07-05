@@ -20,6 +20,7 @@ class ProfileListView(generic.ListView):
     model = Profile
     context_object_name = 'my_profile_list'  # your own name for the list as a template variable
     #queryset = Profile.objects.filter(name__icontains='Tony')[:5]  # Get 5 names containing Tony
+    paginate_by = 1
 
 
 class ProfileDetailView(generic.DetailView):
