@@ -4,21 +4,16 @@ from django.views import generic
 
 
 # Create your views here.
-def index(request):
+def about(request):
     num_profiles = Profile.objects.count()
     num_skills = Skill.objects.count()
-
-    # Number of visits to this view, as counted in the session variable.
-    num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 1
 
     context = {
         'num_profiles': num_profiles,
         'num_skills': num_skills,
-        'num_visits': num_visits,
     }
 
-    return render(request, 'index.html', context=context)
+    return render(request, 'about.html', context=context)
 
 
 class ProfileListView(generic.ListView):
