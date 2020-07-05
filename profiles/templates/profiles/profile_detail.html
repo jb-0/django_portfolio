@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ profile.name }}</h1>
+
+  <p><strong>Email:</strong> {{ profile.email }}</p>
+  <p><strong>About:</strong> {{ profile.about }}</p>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Skills</h4>
+
+    {% for skill in profile.skills.all %}
+      <hr>
+      <p>Hi{{ skill.skill }}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Skill, Profile
+from django.views import generic
 
 
 # Create your views here.
@@ -14,3 +15,12 @@ def index(request):
 
     return render(request, 'index.html', context=context)
 
+
+class ProfileListView(generic.ListView):
+    model = Profile
+    context_object_name = 'my_profile_list'  # your own name for the list as a template variable
+    #queryset = Profile.objects.filter(name__icontains='Tony')[:5]  # Get 5 names containing Tony
+
+
+class ProfileDetailView(generic.DetailView):
+    model = Profile
