@@ -23,11 +23,13 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', include('profiles.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    # TODO - implement homepage
 ]
 
 # Add URL maps to redirect the base URL to our application
 urlpatterns += [
-    # TODO - implement homepage
+
     path('', RedirectView.as_view(url='about/', permanent=True)),
 ]
 
