@@ -62,4 +62,5 @@ This project is licensed under the ...... - see the [LICENSE.md](LICENSE.md) fil
 
 ## Acknowledgments
 
-* To be added
+* I want to acknowledge the various resources that were key in building this site:
+    * https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/skeleton_website

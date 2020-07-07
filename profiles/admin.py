@@ -20,12 +20,12 @@ class ProjectExperienceInline(admin.TabularInline):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'display_skills')
+    list_display = ('name', 'email', 'user_account', 'display_skills')
     list_filter = ('skills',)
     # fields = [('name','display_name'), 'email', 'about', 'spoken_languages', ('github', 'linkedin'), 'skills']
     fieldsets = (
         ('Personal Details', {
-            'fields': (('name', 'display_name'), 'email', 'about')
+            'fields': (('name', 'display_name'), ('user_account', 'email'), 'about')
         }),
         ('Attributes', {
             'fields': ('spoken_languages', ('github', 'linkedin'), 'skills')

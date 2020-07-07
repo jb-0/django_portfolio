@@ -22,15 +22,15 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
-
-urlpatterns += [
-    path('profiles/', include('profiles.urls')),
+    path('about/', include('profiles.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    # TODO - implement homepage
 ]
 
 # Add URL maps to redirect the base URL to our application
 urlpatterns += [
-    path('', RedirectView.as_view(url='profiles/', permanent=True)),
+
+    path('', RedirectView.as_view(url='about/', permanent=True)),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)

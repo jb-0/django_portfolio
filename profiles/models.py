@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse  # Used to generate URLs by reversing the URL patterns
-
+from django.contrib.auth.models import User
 
 # TODO cascade updates, deletes etc.
 # TODO help text
@@ -24,6 +24,7 @@ class Skill(models.Model):
 
 class Profile(models.Model):
     # Fields
+    user_account = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     skills = models.ManyToManyField(Skill, help_text='Select skills for this profile')
     name = models.CharField(max_length=50, help_text='Enter your real name')
     display_name = models.CharField(max_length=50, blank=True, help_text='Enter your preferred display name')
