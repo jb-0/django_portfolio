@@ -22,7 +22,7 @@ class NewProfileForm(forms.Form):
         if not data['name']:
             raise ValidationError(_('Invalid name - name field is blank'))
 
-        # TODO any further validation?
+        # TODO any further validation? Email shouldn't exist in DB?
 
         return data
 
