@@ -50,8 +50,6 @@ class Profile(models.Model):
         # TODO if there are more than 3 then a trailing "..." should be added
         return ', '.join(skill.skill for skill in self.skills.all()[:3])
 
-
-
     def __str__(self):
         return self.name
 
