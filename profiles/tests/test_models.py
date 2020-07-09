@@ -222,4 +222,5 @@ class WorkExperienceModelTest(TestCase):
         self.assertEquals(work_experience_instance.__str__(), work_experience_instance.job_title)
 
 
+# TODO project experience test cases
 # TODO tests for can be blank? As this could result in form submission errors etc.
