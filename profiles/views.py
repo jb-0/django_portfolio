@@ -4,8 +4,10 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .models import Skill, Profile
 from .forms import NewProfileForm
+from django.contrib.auth.decorators import login_required
 
 
+@login_required()
 def new_profile(request):
     new_profile_instance = Profile()
 
