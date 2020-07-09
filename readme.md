@@ -42,13 +42,9 @@ virtual environment type such as conda.
     ```
 
 ## Running the tests
-
-To be updated when test cases populated
-
 ```
-Test execution
+python manage.py test profiles.tests
 ```
-
 
 ## Authors
 
