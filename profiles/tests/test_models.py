@@ -2,6 +2,7 @@ from django.test import TestCase
 from datetime import datetime
 from profiles.models import Skill, Profile, WorkExperience, ProjectExperience
 
+# TODO tests for can be blank? As this could result in form submission errors etc.
 
 class SkillModelTest(TestCase):
 
@@ -222,5 +223,70 @@ class WorkExperienceModelTest(TestCase):
         self.assertEqual(work_experience_instance.__str__(), work_experience_instance.job_title)
 
 
-# TODO project experience test cases
-# TODO tests for can be blank? As this could result in form submission errors etc.
+class ProjectExperienceModelTest(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        Profile.objects.create(name="Simon Says", email="simon@says.com", about="Test purposes")
+
+        for i in range(3, 10):
+            ProjectExperience.objects.create(project_title=f"{i}project", link=f"www.{i}life.com",
+                                          duties="Work hard", profile_id=1, programming_languages=f"{i}All of them")
+
+        ProjectExperience.objects.create(project_title="1project", link=f"www.1life.com",
+                                         duties="Work hard", profile_id=1, programming_languages=f"1All of them")
+
+    ###########################################################################################
+    # Verbose name tests
+    def test_profile_label(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        field_label = project_experience_instance._meta.get_field('profile').verbose_name
+        self.assertEqual(field_label, 'profile')
+
+    def test_project_title_label(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        field_label = project_experience_instance._meta.get_field('project_title').verbose_name
+        self.assertEqual(field_label, 'project title')
+
+    def test_duties_label(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        field_label = project_experience_instance._meta.get_field('duties').verbose_name
+        self.assertEqual(field_label, 'duties')
+
+    def test_programming_languages_label(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        field_label = project_experience_instance._meta.get_field('programming_languages').verbose_name
+        self.assertEqual(field_label, 'programming languages')
+
+    def test_link_label(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        field_label = project_experience_instance._meta.get_field('link').verbose_name
+        self.assertEqual(field_label, 'link')
+
+    ############################################################################################
+    # Max length tests
+    def test_project_title_max_length(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        max_length = project_experience_instance._meta.get_field('project_title').max_length
+        self.assertEqual(max_length, 100)
+
+    def test_duties_max_length(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        max_length = project_experience_instance._meta.get_field('duties').max_length
+        self.assertEqual(max_length, 1500)
+
+    def test_programming_languages_max_length(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        max_length = project_experience_instance._meta.get_field('programming_languages').max_length
+        self.assertEqual(max_length, 200)
+
+############################################################################################
+    # Custom methods tests
+    def test_ordering(self):
+        project_experience_objects = ProjectExperience.objects.all()
+        self.assertEqual(project_experience_objects[0].project_title, '1project')
+        self.assertEqual(project_experience_objects[1].project_title, '3project')
+
+    def test__str__(self):
+        project_experience_instance = ProjectExperience.objects.get(id=1)
+        self.assertEqual(project_experience_instance.__str__(), project_experience_instance.project_title)
