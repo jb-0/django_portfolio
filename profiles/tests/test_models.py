@@ -2,8 +2,6 @@ from django.test import TestCase
 from datetime import datetime
 from profiles.models import Skill, Profile, WorkExperience, ProjectExperience
 
-# TODO tests for can be blank? As this could result in form submission errors etc.
-
 class SkillModelTest(TestCase):
 
     @classmethod
@@ -46,6 +44,34 @@ class ProfileModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         Profile.objects.create(name="Simon Says", email="simon@says.com", about="Test purposes")
+
+    ############################################################################################
+    # Permit null or blank tests
+    def test_user_account_null_and_blank_are_true(self):
+        profile_instance = Profile.objects.get(id=1)
+        null_set_as = profile_instance._meta.get_field('user_account').null
+        blank_set_as = profile_instance._meta.get_field('user_account').blank
+        self.assertTrue(null_set_as and blank_set_as)
+
+    def test_display_name_blank_is_true(self):
+        profile_instance = Profile.objects.get(id=1)
+        blank_set_as = profile_instance._meta.get_field('display_name').blank
+        self.assertTrue(blank_set_as)
+
+    def test_spoken_languages_blank_is_true(self):
+        profile_instance = Profile.objects.get(id=1)
+        blank_set_as = profile_instance._meta.get_field('spoken_languages').blank
+        self.assertTrue(blank_set_as)
+
+    def test_github_blank_is_true(self):
+        profile_instance = Profile.objects.get(id=1)
+        blank_set_as = profile_instance._meta.get_field('github').blank
+        self.assertTrue(blank_set_as)
+
+    def test_linkedin_blank_is_true(self):
+        profile_instance = Profile.objects.get(id=1)
+        blank_set_as = profile_instance._meta.get_field('linkedin').blank
+        self.assertTrue(blank_set_as)
 
     ############################################################################################
     # Verbose name tests
@@ -150,6 +176,18 @@ class WorkExperienceModelTest(TestCase):
                                       job_title="Senior - Middle Start date",
                                       duties="Work hard", profile_id=1)
 
+    ############################################################################################
+    # Permit null or blank tests
+    def test_end_date_null_and_blank_are_true(self):
+        work_experience_instance = WorkExperience.objects.get(id=1)
+        null_set_as = work_experience_instance._meta.get_field('end_date').null
+        blank_set_as = work_experience_instance._meta.get_field('end_date').blank
+        self.assertTrue(null_set_as and blank_set_as)
+
+    def test_company_alias_blank_is_true(self):
+        work_experience_instance = WorkExperience.objects.get(id=1)
+        blank_set_as = work_experience_instance._meta.get_field('company_alias').blank
+        self.assertTrue(blank_set_as)
 
     ############################################################################################
     # Verbose name tests

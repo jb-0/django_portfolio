@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 
 # TODO cascade updates, deletes etc.
 # TODO help text
-# TODO explore other Charfield Params
 
 
 # Create your models here.
@@ -32,8 +31,6 @@ class Profile(models.Model):
     about = models.CharField(max_length=1000, help_text='Provide a little bit of detail about yourself')
     spoken_languages = models.CharField(blank=True, max_length=200,
                                         help_text='List the languages you speak including proficiency level')
-
-    # TODO: Fields should be moved into a separate 'Sites' class in the future to make this app more flexible
     github = models.URLField(blank=True, help_text='Provide a link to your GitHub page')
     linkedin = models.URLField(blank=True, help_text='Provide a link to your LinkedIn page')
 
