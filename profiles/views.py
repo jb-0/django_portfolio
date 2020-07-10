@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from .models import Skill, Profile
 from .forms import NewProfileForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 @login_required()
@@ -49,8 +50,8 @@ def about(request):
         'profiles': Profile.objects.all()
     }
 
-    return render(request, 'about.html', context=context)
+    return render(request, 'profiles/about.html', context=context)
 
 
-class ProfileDetailView(generic.DetailView):
+class ProfileDetailView(LoginRequiredMixin, generic.DetailView):
     model = Profile
