@@ -53,7 +53,7 @@ python manage.py test profiles.tests
 
 ## License
 
-This project is licensed under the ...... - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT license - see the [LICENSE](LICENSE) file for details
 
 
 ## Acknowledgments
