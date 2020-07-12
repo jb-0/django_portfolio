@@ -13,23 +13,21 @@ documentation including:
 
 ### Prerequisites
 
-This project has been developed with Python 3.8, therefore the main prerequisite is having Python 3.8 installed on your
+This project has been developed with Python 3.7+, therefore the main prerequisite is having Python 3.7+ installed on your
 machine. We recognise this project will work with older versions but remains untested.
 
 
 ### Installing
 
-The install instructions assume you have created a venv with Python 3.8, but you could also use another 
-virtual environment type such as conda.
+The install instructions assume you have created a venv, but you could also use another virtual environment type such 
+as conda.
 
 1. Clone the repo locally
 
-2. Open your terminal, navigate to the root of this project and launch your python venv
+2. Install the requirements outlined in requirements.txt
 
-3. Install Django 3.0.8 to your venv
-    ```
-    pip install django
-    ```
+3. Open your terminal, navigate to the root of this project and launch your python venv
+
 4. With Django installed and remaining in the root folder make migrations
     ```
     python manage.py makemigrations
